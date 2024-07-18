@@ -1,12 +1,28 @@
-import { Page, test, expect, Locator} from '@playwright/test';
+import { test, expect} from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage.ts';
 
-test('Login page validation', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    
-    await loginPage.open();
-    await expect(loginPage.usernameField).toBeVisible();
-    await expect(loginPage.userPasswordField).toBeVisible();
-    await expect(loginPage.loginButton).toBeVisible();
+let loginPage: LoginPage;
+
+
+test.describe('Login page validations', () => {
+    test.beforeEach(({ page }) => {
+        loginPage = new LoginPage(page);
+    })
+    test('Username field is visible', async () => {
+        await loginPage.open();
+        await expect(loginPage.usernameField).toBeVisible();
 });
+
+    test('Password field is visible', async () => {
+        await loginPage.open();
+        await expect(loginPage.userPasswordField).toBeVisible();
+});
+
+    test('Login button is visible', async () => {
+        await loginPage.open();
+        await expect(loginPage.loginButton).toBeVisible();
+});
+
+})
+
 
