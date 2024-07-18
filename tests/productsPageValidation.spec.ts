@@ -3,41 +3,38 @@ import { LoginPage } from '../pages/LoginPage.ts';
 import { ProductsPage } from '../pages/ProductsPage.ts';
 import { ProductPage } from '../pages/ProductPage.ts';
 
+let productsPage: ProductsPage;
+let loginPage: LoginPage;
+let productPage: ProductPage;
 
-test('Validate that Log Out button is visible', async ({ page }) => {
-  const productsPage = new ProductsPage(page);
-  const loginPage = new LoginPage(page);
+test.describe('Products page validations', () => {
+  test.beforeEach(({page}) => {
+    productsPage = new ProductsPage(page);
+    loginPage = new LoginPage(page);
+    productPage = new ProductPage(page);
+  });
 
-  await loginPage.open();
-  await loginPage.fillLoginFormAndSubmit();
-  await productsPage.burgerMenu.click();
-  await productsPage.logoutButton.click();
+  test('Validate that Log Out button is visible', async () => {
+    await loginPage.open();
+    await loginPage.fillLoginFormAndSubmit();
+    await productsPage.burgerMenu.click();
+    await productsPage.logoutButton.click();
+  });
+
+  test('Validate that products Cart is visible', async () => {
+    await loginPage.open();
+    await loginPage.fillLoginFormAndSubmit();
+    await expect(productsPage.cartIcon).toBeVisible();
 });
 
-test('Validate that products Cart is visible', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const productsPage = new ProductsPage(page);
-
-  await loginPage.open();
-  await loginPage.fillLoginFormAndSubmit();
-  await expect(productsPage.cartIcon).toBeVisible();
+  test('Product name, picture, description, price, add to cart button is visible on product page', async () => {
+    await loginPage.open();
+    await loginPage.fillLoginFormAndSubmit();
+    await productsPage.itemsOnPage[1].click();
+    await expect(productPage.productName).toBeVisible();
+    await expect(productPage.productPricture).toBeVisible();
+    await expect(productPage.productPrice).toBeVisible();
+    await expect(productPage.productDescription).toBeVisible();
+    await expect(productPage.addProductToCartButton).toBeVisible();
 });
-
-/** --- TO DO ---
- *        Треба розбити тест знизу на 5 частин, зрозуміти як винести 
- *        productPage, loginPage, productsPage в прекондішн для всіх тестів
- */ 
-test('Product name, picture, description, price, add to cart button is visible on product page', async ({ page }) => {
-  const productPage = new ProductPage(page);
-  const loginPage = new LoginPage(page);
-  const productsPage = new ProductsPage(page);
-
-  await loginPage.open();
-  await loginPage.fillLoginFormAndSubmit();
-  await productsPage.itemsOnPage[1].click();
-  await expect(productPage.productName).toBeVisible();
-  await expect(productPage.productPricture).toBeVisible();
-  await expect(productPage.productPrice).toBeVisible();
-  await expect(productPage.productDescription).toBeVisible();
-  await expect(productPage.addProductToCartButton).toBeVisible();
 });
