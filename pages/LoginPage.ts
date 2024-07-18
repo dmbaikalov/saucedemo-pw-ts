@@ -1,6 +1,6 @@
 import { Page, expect, Locator } from '@playwright/test';
 import { userData, mainLink } from '../helpers/TestData';
-import { Url } from 'url';
+
 
 export class LoginPage {
     readonly page: Page;
@@ -8,12 +8,12 @@ export class LoginPage {
     readonly userPasswordField: Locator;
     readonly loginButton: Locator;
     readonly loginPageLogo: Locator;
-    readonly productPageLink: String;
+    readonly productsPageLink: String;
 
     
     constructor(page: Page){
         this.page = page;
-        this.productPageLink = "https://www.saucedemo.com/inventory.html"
+        this.productsPageLink = "https://www.saucedemo.com/inventory.html"
         this.loginPageLogo = page.getByText('Swag Labs');
         this.usernameField = page.locator('[data-test="username"]');
         this.userPasswordField = page.locator('[data-test="password"]');
@@ -31,6 +31,6 @@ export class LoginPage {
     }
 
     async checkIfLoginWasSuccesful() {
-        await expect(this.page.url()).toEqual(this.productPageLink);
+        await expect(this.page.url()).toEqual(this.productsPageLink);
     }
 }

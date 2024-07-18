@@ -1,6 +1,5 @@
-import { Page, test, expect, Locator } from '@playwright/test';
+import { Page, expect, Locator } from '@playwright/test';
 import { LoginPage } from './LoginPage';
-import { productsList } from '../helpers/TestData';
 
 export class ProductsPage extends LoginPage {
     readonly cartIcon: Locator;
