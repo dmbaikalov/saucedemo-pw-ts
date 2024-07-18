@@ -27,14 +27,37 @@ test.describe('Products page validations', () => {
     await expect(productsPage.cartIcon).toBeVisible();
 });
 
-  test('Product name, picture, description, price, add to cart button is visible on product page', async () => {
+  test('Product name is visible on product page', async () => {
     await loginPage.open();
     await loginPage.fillLoginFormAndSubmit();
     await productsPage.itemsOnPage[1].click();
     await expect(productPage.productName).toBeVisible();
+});
+  test('Product picture is visible on product page', async () => {
+    await loginPage.open();
+    await loginPage.fillLoginFormAndSubmit();
+    await productsPage.itemsOnPage[1].click();
     await expect(productPage.productPricture).toBeVisible();
+});
+
+  test('Product price is visible on product page', async () => {
+    await loginPage.open();
+    await loginPage.fillLoginFormAndSubmit();
+    await productsPage.itemsOnPage[1].click();
     await expect(productPage.productPrice).toBeVisible();
+});
+
+  test('Product description is visible on product page', async () => {
+    await loginPage.open();
+    await loginPage.fillLoginFormAndSubmit();
+    await productsPage.itemsOnPage[1].click();
     await expect(productPage.productDescription).toBeVisible();
+});
+
+  test('Cart button is visible on product page', async () => {
+    await loginPage.open();
+    await loginPage.fillLoginFormAndSubmit();
+    await productsPage.itemsOnPage[1].click();
     await expect(productPage.addProductToCartButton).toBeVisible();
 });
 });
