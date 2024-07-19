@@ -8,15 +8,15 @@ export class ProductsPage extends LoginPage {
     readonly addItemToCart: Locator[];
     readonly itemsOnPage: Locator[];
     readonly cartButton: Locator;
-    readonly cartWithProducts: Locator;
 
-        
+
+    
     constructor(page: Page){
         super(page);
         this.cartIcon = page.locator('[data-test="shopping-cart-link"]');
-        this.cartWithProducts = page.locator('[data-test="shopping-cart-badge"]');
         this.burgerMenu = page.getByRole('button', { name: 'Open Menu' });
         this.logoutButton = page.locator('[data-test="logout-sidebar-link"]');
+        this.cartButton = page.locator('.shopping_cart_link');
         this.addItemToCart = [
             page.locator(".btn_inventory").nth(0),
             page.locator(".btn_inventory").nth(1),
