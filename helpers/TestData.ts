@@ -12,3 +12,9 @@ export const userData = {
     username: "standard_user",
     password: "secret_sauce"
 }
+
+export const userCredentials = {
+    firstname: "John",
+    lastname: "Doe",
+    zipcode: "12345"
+}
