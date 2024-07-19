@@ -11,17 +11,17 @@ test.describe('Login page validations', () => {
     test('Username field is visible', async () => {
         await loginPage.open();
         await expect(loginPage.usernameField).toBeVisible();
-});
+    });
 
     test('Password field is visible', async () => {
         await loginPage.open();
         await expect(loginPage.userPasswordField).toBeVisible();
-});
+    });
 
     test('Login button is visible', async () => {
         await loginPage.open();
         await expect(loginPage.loginButton).toBeVisible();
-});
+    });
 
 })
 
