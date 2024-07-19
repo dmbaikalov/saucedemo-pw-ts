@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import { ProductPage } from "./ProductPage";
-import { LoginPage } from "./LoginPage";
+
 
 export class CartPage extends ProductPage {
     readonly qtyColumn: Locator;
