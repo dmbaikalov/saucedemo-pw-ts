@@ -7,17 +7,13 @@ import { CheckoutPage } from '../pages/CheckoutPage';
 import { userCredentials } from '../helpers/TestData';
 
 let loginPage: LoginPage;
-let productPage: ProductPage;
 let productsPage: ProductsPage;
-let cartPage: CartPage;
 let checkoutPage: CheckoutPage;
 
 test.describe('E2E tests', () => {
   test.beforeEach(({ page }) => {
     loginPage = new LoginPage(page);
-    productPage = new ProductPage(page);
     productsPage = new ProductsPage(page);
-    cartPage = new CartPage(page);
     checkoutPage = new CheckoutPage(page);
   });
 
@@ -27,7 +23,7 @@ test.describe('E2E tests', () => {
     await loginPage.checkIfLoginWasSuccesful();
   });
 
-  test('After adding a product to the cart, the user will be able to see the number one on the cart icon', async ({page}) => {
+  test('After adding a product to the cart, the user will be able to see the number one on the cart icon', async () => {
     await loginPage.open();
     await loginPage.fillLoginFormAndSubmit();
     await productsPage.addItemToCart[0].click();
