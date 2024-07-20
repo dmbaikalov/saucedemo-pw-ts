@@ -1,0 +1,23 @@
+image: docker:latest
+
+stages:
+  - test
+
+tests:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.45.1-jammy
+  parallel:
+    matrix:
+      - PROJECT: ['chromium']
+        SHARD: ['1/10', '2/10', '3/10', '4/10', '5/10', '6/10', '7/10', '8/10', '9/10', '10/10']
+  script:
+    - npm ci
+    - npx playwright test
+    - npx playwright test --project=$PROJECT --shard=$SHARD
+    - echo "https://$CI_PROJECT_NAMESPACE.gitlab.io/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/playwright-report/index.html"
+  allow_failure: true
+  artifacts:
+    when: always
+    paths:
+      - playwright-report
+    expire_in: 2 days
