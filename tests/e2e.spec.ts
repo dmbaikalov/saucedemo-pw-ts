@@ -135,7 +135,7 @@ test.describe('E2E tests', () => {
     await productsPage.addItemToCart[0].click();
     await expect(productsPage.cartButton).toHaveText('1');
   });
-// TO-DO --> Separate duplicates with different methods
+
   test('After adding six products to the cart, the user will be able to see the number six on the cart icon', async () => {
     await loginPage.open();
     await loginPage.fillLoginFormAndSubmit();
