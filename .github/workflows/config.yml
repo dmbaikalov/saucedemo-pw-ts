@@ -3,7 +3,7 @@ name: UI tests
 on: [push]
 
 jobs:
-  build:
+  ui-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,7 @@ jobs:
           path: gh-pages
 
       - name: Run UI-tests via docker-compose
-        run: docker compose up
+        run: docker-compose up
 
       - name: Build test report
         uses: simple-elf/allure-report-action@v1.7
