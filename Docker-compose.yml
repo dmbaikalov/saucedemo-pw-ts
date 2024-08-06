@@ -5,9 +5,9 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./:/usr/app
+      - ./:/usr/workspace
     command: /bin/sh -c "ls -la && npm run test"
-    working_dir: /usr/app
+    working_dir: /usr/workspace
     environment:
       - LOGIN=${LOGIN}
       - PASSWORD=${PASSWORD}
