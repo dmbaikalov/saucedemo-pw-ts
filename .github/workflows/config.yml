@@ -11,13 +11,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run UI-tests via docker-compose
-      run: docker compose run regression /bin/sh -c "ls -la && npm install && npx playwright test"
+      run: docker compose run regression /bin/sh -c "ls -la && npx playwright test"
 
     - name: Build test report
       uses: simple-elf/allure-report-action@v1.7
       if: always()
       with:
-        allure_results: allure-report
+        allure_results: ./app/allure-results
         gh_pages: gh-pages
         allure_report: ./app/allure-report
         allure_history: ./app/allure-history
