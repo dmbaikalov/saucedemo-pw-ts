@@ -12,6 +12,7 @@ jobs:
       - name: Run UI-tests via docker-compose
         run: |
           docker compose up
+        echo $JAVA_HOME
 
       - name: Generate Allure report
         run: |
