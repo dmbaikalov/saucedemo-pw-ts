@@ -12,4 +12,4 @@ RUN npm install -g playwright \
 RUN npm init -y
 RUN apt-get update && apt-get install -y wget gnupg ca-certificates && \
     curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt install -y nodejs
+    apt install -y nodejs openjdk-11-jre

@@ -1,0 +1,14 @@
+services:
+  regression:
+    image: mcr.microsoft.com/playwright:focal
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/app
+    command: /bin/sh -c "ls -la && npm run test"
+    working_dir: /usr/app
+    environment:
+      - LOGIN=${LOGIN}
+      - PASSWORD=${PASSWORD}
+    

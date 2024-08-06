@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test --reporter=allure-playwright && npm run allure:generate",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.45.1",
-    "@types/node": "^20.14.10"
+    "@types/node": "^20.14.10",
+    "allure-commandline": "^2.30.0",
+    "allure-playwright": "^3.0.0-beta.8"
   },
   "directories": {
     "test": "tests"
