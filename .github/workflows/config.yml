@@ -18,9 +18,8 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-        run: "JAVA_HOME=/opt/hostedtoolcache/Java_Adopt_jdk/11.0.24-8/x64"
         run: |
-          sudo docker compose run regression /bin/sh -c "npx allure generate allure-results"
+          "JAVA_HOME=/opt/hostedtoolcache/Java_Adopt_jdk/11.0.24-8/x64" && sudo docker compose run regression /bin/sh -c "npx allure generate allure-results"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
