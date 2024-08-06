@@ -21,7 +21,7 @@ jobs:
           check-latest: true
 
       - name: Set JAVA_HOME environment variable
-        run: JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))" >> $GITHUB_ENV
+        run: JAVA_HOME=/opt/hostedtoolcache/Java_Zulu_jdk/21.0.4-7/x64
       
       - name: Generate Allure report
         run: |
