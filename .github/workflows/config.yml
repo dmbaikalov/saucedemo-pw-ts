@@ -18,7 +18,8 @@ jobs:
       
       - name: Generate Allure report
         run: |
-          sudo docker-compose run reggression /bin/sh -c "npx allure serve allure-results"
+          sudo docker-compose run reggression /bin/sh -c "ls -la && npx playwright test --reporter=list --output=allure-results && npx allure generate allure-results --output allure-report"
+
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
