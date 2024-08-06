@@ -15,5 +15,8 @@
   },
   "directories": {
     "test": "tests"
+  },
+  "dependencies": {
+    "playwright": "^1.46.0"
   }
 }
