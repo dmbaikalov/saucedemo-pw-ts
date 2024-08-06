@@ -3,7 +3,7 @@ name: UI tests
 on: [push]
 
 jobs:
-  ui-tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
