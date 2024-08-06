@@ -19,12 +19,10 @@ jobs:
           distribution: 'zulu'
           java-version: '21'
           check-latest: true
-
-      - name: Set JAVA_HOME environment variable
         env:
           JAVA_HOME: ${{ env.JAVA_HOME }}
           PATH: ${{ env.JAVA_HOME }}/bin:${{ env.PATH }}
-      
+
       - name: Generate Allure report
         run: |
           sudo docker compose run regression /bin/sh -c "npx allure generate allure-results"
