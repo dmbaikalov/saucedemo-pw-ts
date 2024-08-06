@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/playwright:focal
 WORKDIR /app
 
 COPY tests /app/tests/
-COPY package*.json /app/
+COPY package.json /app/
 COPY . .
 
 RUN npm cache clean --force \
