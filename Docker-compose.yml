@@ -5,9 +5,9 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./:/usr/workspace
+      - ./:/app
     command: /bin/sh -c "ls -la && npm run test --alluredir=allure-results"
-    working_dir: /usr/workspace
+    working_dir: /app
     environment:
       - LOGIN=${LOGIN}
       - PASSWORD=${PASSWORD}
