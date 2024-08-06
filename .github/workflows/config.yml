@@ -23,10 +23,6 @@ jobs:
           JAVA_HOME: ${{ env.JAVA_HOME }}
           PATH: ${{ env.JAVA_HOME }}/bin:${{ env.PATH }}
 
-      - name: Generate Allure report
-        run: |
-          sudo docker compose run regression /bin/sh -c "npx allure generate build/allure-results --clean"
-
       - name: Build test report
         uses: simple-elf/allure-report-action@v1.7
         if: always()
