@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/usr/workspace
-    command: /bin/sh -c "ls -la && npm run test"
+    command: /bin/sh -c "ls -la && npm run test --alluredir=allure-results"
     working_dir: /usr/workspace
     environment:
       - LOGIN=${LOGIN}
