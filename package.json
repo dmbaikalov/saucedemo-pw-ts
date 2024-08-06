@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test --reporter=allure-playwright && npm run allure:generate",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open"
   },
   "keywords": [],
   "author": "",
