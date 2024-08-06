@@ -9,6 +9,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        ref: gh-pages
+        path: gh-pages
 
     - name: Run UI-tests via docker-compose
       run: docker compose run regression /bin/sh -c "ls -la && npm install && npx playwright test"
