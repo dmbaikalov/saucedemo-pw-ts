@@ -14,12 +14,11 @@ jobs:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          docker-compose up --exit-code-from regression || true
+          docker compose up --exit-code-from regression || true
       
       - name: Generate Allure report
         run: |
-          sudo docker-compose run reggression /bin/sh -c "ls -la && npx playwright test --reporter=list --output=allure-results && npx allure generate allure-results --output allure-report"
-
+          sudo docker compose run reggression /bin/sh -c "ls -la && npx playwright test --reporter=list --output=allure-results && npx allure generate allure-results --output allure-report"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
