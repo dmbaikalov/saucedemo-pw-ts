@@ -6,6 +6,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/app
-    command: /bin/sh -c "ls -la && npm run test && npx allure serve allure-results"
+    command: /bin/sh -c "ls -la && npm run test"
     working_dir: /app
     
