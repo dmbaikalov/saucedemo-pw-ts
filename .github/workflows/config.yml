@@ -19,7 +19,7 @@ jobs:
       with:
         allure_results: ./app/allure-results
         gh_pages: gh-pages
-        allure_report: ./app/allure-report
+        allure_report: ./app/allure-results
         allure_history: ./app/allure-history
         keep_reports: 8
 
