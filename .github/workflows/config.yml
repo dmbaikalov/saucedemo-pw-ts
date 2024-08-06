@@ -39,4 +39,4 @@ jobs:
           github_token: ${{ secrets.CI_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-report
-          destination_dir: ./app/${{ matrix.test }}
+          destination_dir: ./app
