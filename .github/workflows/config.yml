@@ -14,9 +14,15 @@ jobs:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: docker-compose up
-
+      
+      - name: Install Docker Compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d\" -f4)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+      
       - name: Generate Allure report
-        run: sudo docker-compose run reggression /bin/sh -c "allure generate allure-results --clean -o allure-report"
+        run: |
+          sudo docker-compose run reggression /bin/sh -c "allure generate allure-results --clean -o allure-report"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
