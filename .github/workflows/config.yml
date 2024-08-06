@@ -7,30 +7,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Run UI-tests via docker-compose
-        run: docker compose up
+    - name: Run UI-tests via docker-compose
+      run: docker compose up
 
-      - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
-        if: always()
-        with:
-          allure_results: allure-report
-          gh_pages: gh-pages
-          allure_report: ./app/allure-report
-          allure_history: ./app/allure-history
-          keep_reports: 8
+    - name: Build test report
+      uses: simple-elf/allure-report-action@v1.7
+      if: always()
+      with:
+        allure_results: allure-report
+        gh_pages: gh-pages
+        allure_report: ./app/allure-report
+        allure_history: ./app/allure-history
+        keep_reports: 8
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.CI_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./app/allure-report
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.CI_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./app/allure-report
