@@ -9,25 +9,24 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      if: always()
-      continue-on-error: true
 
     - name: Run UI-tests via docker-compose
       run: docker compose run regression /bin/sh -c "ls -la && npm install && npx playwright test"
 
     - name: Build test report
-      uses: simple-elf/allure-report-action@v1.7
+      uses: simple-elf/allure-report-action@master
       if: always()
+      id: allure-report
       with:
-        allure_results: ./app/allure-results
+        allure_results: build/allure-results
         gh_pages: gh-pages
-        allure_report: ./app/allure-results
-        allure_history: ./app/allure-history
-        keep_reports: 8
+        allure_report: allure-report
+        allure_history: allure-history
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.CI_TOKEN }}
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.CI_TOKEN }}
         PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./app/allure-report
+        PUBLISH_DIR: allure-history
