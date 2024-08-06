@@ -16,7 +16,7 @@ jobs:
           java-version: '11'
 
       - name: Set JAVA_HOME environment variable
-        run: echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))" >> $GITHUB_ENV
+        run: "JAVA_HOME=/opt/hostedtoolcache/Java_Adopt_jdk/11.0.24-8/x64"
 
       - name: Run UI-tests via docker-compose
         run: |
