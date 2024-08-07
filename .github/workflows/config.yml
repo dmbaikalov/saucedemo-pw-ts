@@ -19,7 +19,6 @@ jobs:
       id: allure-report
       continue-on-error: true
       with:
-
         allure_results: allure-results
         gh_pages: gh-pages
         allure_report: allure-report
