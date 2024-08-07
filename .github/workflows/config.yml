@@ -19,12 +19,12 @@ jobs:
       id: allure-report
       continue-on-error: true
       with:
-        ref: gh-pages
-        path: gh-pages
+        ref: saucedemo-pw-ts_default/gh-pages
+        path: saucedemo-pw-ts_default/gh-pages
         allure_results: build/allure-results
-        gh_pages: gh-pages
-        allure_report: allure-report
-        allure_history: allure-history
+        gh_pages: saucedemo-pw-ts_default/gh-pages
+        allure_report: saucedemo-pw-ts_default/allure-report
+        allure_history: saucedemo-pw-ts_default/allure-history
 
     - name: Deploy to GitHub Pages
       if: always()
