@@ -17,7 +17,10 @@ jobs:
       uses: simple-elf/allure-report-action@master
       if: always()
       id: allure-report
+      continue-on-error: true
       with:
+        ref: gh-pages
+        path: gh-pages
         allure_results: build/allure-results
         gh_pages: gh-pages
         allure_report: allure-report
