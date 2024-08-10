@@ -3,6 +3,7 @@ import { ProductPage } from "./ProductPage";
 
 
 export class CartPage extends ProductPage {
+
     readonly qtyColumn: Locator;
     readonly descriptionColumn: Locator;
     readonly continueShoppingButton: Locator;
@@ -15,5 +16,5 @@ export class CartPage extends ProductPage {
         this.descriptionColumn = page.getByText('Description');
         this.continueShoppingButton = page.getByRole('button', { name: 'Continue Shopping'});
         this.checkoutButton = page.getByRole('button', { name: 'Checkout'});
-    }
+    };
 };
